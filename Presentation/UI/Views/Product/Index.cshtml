@@ -1,0 +1,32 @@
+﻿@using System.Data
+@model DataTable
+
+@{
+    ViewData["Title"] = "API AND MVC";
+}
+
+<table class="table">
+     <thead>
+         <tr>
+             <th>Name</th>
+             <th>Price</th>
+             <th>Is Sold</th>
+             <th>Status</th>
+             <th>Color</th>
+             <th>Category</th>
+         </tr>
+     </thead>
+     <tbody>
+         @foreach (DataRow row in Model.Rows)
+         {
+             <tr>
+                 <td>@row["Name"]</td>
+                 <td>@row["Price"]</td>
+                 <td>@row["IsSold"]</td>
+                 <td>@row["Status"]</td>
+                 <td>@row["ColorId"]</td>
+                 <td>@row["CategoryId"]</td>
+             </tr>
+         }
+     </tbody>
+</table>

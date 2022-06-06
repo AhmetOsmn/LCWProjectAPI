@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\LCWProjectAPI.Application\LCWProjectAPI.Application.csproj" />
+    <ProjectReference Include="..\..\Core\LCWProjectAPI.Domain\LCWProjectAPI.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\LCWProjectAPI.Infrastructure\LCWProjectAPI.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\LCWProjectAPI.Persistence\LCWProjectAPI.Persistence.csproj" />
   </ItemGroup>

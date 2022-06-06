@@ -1,4 +1,5 @@
-﻿using LCWProjectAPI.Application.Repositories;
+﻿using EntityLayer.Concrete.Utilities;
+using LCWProjectAPI.Application.Repositories;
 using LCWProjectAPI.Domain.Entities.Common;
 using LCWProjectAPI.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -17,39 +18,74 @@ namespace LCWProjectAPI.Persistence.Repositories
 
         public DbSet<T> Table => _context.Set<T>();
 
-        public async Task<bool> AddAsync(T model)
+        public async Task<IResult> AddAsync(T model)
         {
-            EntityEntry<T> entityEntry = await Table.AddAsync(model);
-            return entityEntry.State == EntityState.Added;
+            if(model != null)
+            {
+                EntityEntry<T> entityEntry = await Table.AddAsync(model);
+                if (entityEntry.State == EntityState.Added)
+                {
+                    return new SuccessResult("Ekleme İşlemi Başarılı");
+                }
+            }
+            return new ErrorResult("Geçersiz Veri Girişi");
         }
 
-        public async Task<bool> AddRangeAsync(List<T> datas)
+        public async Task<IResult> AddRangeAsync(List<T> datas)
         {
-            await Table.AddRangeAsync(datas);
-            return true;
+            if(datas != null)
+            {
+                await Table.AddRangeAsync(datas);
+                return new SuccessResult("Ekleme İşlemi Başarılı");
+            }
+            return new ErrorResult("Geçeriz Veri Girişi");
         }
 
-        public bool Remove(T model)
+        public IResult Remove(T model)
         {
-            EntityEntry<T> entityEntriy = Table.Remove(model);
-            return entityEntriy.State == EntityState.Deleted;
-        }
-        public bool RemoveRange(List<T> datas)
-        {
-            Table.RemoveRange(datas);
-            return true;
+            if(model != null)
+            {
+                EntityEntry<T> entityEntriy = Table.Remove(model);
+                if (entityEntriy.State == EntityState.Deleted)
+                {
+                    return new SuccessResult("Silme İşlemi Başarılı");
+                }
+            }
+            return new ErrorResult("Geçeriz Veri Girişi");
         }
 
-        public async Task<bool> RemoveAsync(string id)
+        public IResult RemoveRange(List<T> datas)
+        {
+            if(datas != null)
+            {
+                Table.RemoveRange(datas);
+                return new SuccessResult("Silme İşlemi Başarılı");
+            }
+            return new ErrorResult("Geçersiz Veri Girişi");
+        }
+
+        public async Task<IResult> RemoveAsync(string id)
         {
             T model = await Table.FirstOrDefaultAsync(data => data.Id == int.Parse(id));
-            return Remove(model);
+            if(model != null)
+            {
+                Remove(model);
+                return new SuccessResult("Silme İşlemi Başarılı");
+            }
+            return new ErrorResult("Geçersiz ID");
         }
 
-        public bool Update(T model)
+        public IResult Update(T model)
         {
-            EntityEntry entityEntry = Table.Update(model);
-            return entityEntry.State == EntityState.Modified;
+            if(model != null)
+            {
+                EntityEntry entityEntry = Table.Update(model);
+                if (entityEntry.State == EntityState.Modified)
+                {
+                    return new SuccessResult("Güncelleme İşlemi Başarılı");
+                }
+            }
+            return new ErrorResult("Güncelleme Başarısız");
         }
 
         public async Task<int> SaveAsync() => await _context.SaveChangesAsync();

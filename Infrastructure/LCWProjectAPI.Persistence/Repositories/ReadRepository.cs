@@ -1,4 +1,5 @@
-﻿using LCWProjectAPI.Application.Repositories;
+﻿using EntityLayer.Concrete.Utilities;
+using LCWProjectAPI.Application.Repositories;
 using LCWProjectAPI.Domain.Entities.Common;
 using LCWProjectAPI.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -17,30 +18,50 @@ namespace LCWProjectAPI.Persistence.Repositories
 
         public DbSet<T> Table => _context.Set<T>();
 
-        public IQueryable<T> GetAll()
+        public IDataResult<IQueryable<T>> GetAll()
         {
             var query = Table.AsQueryable();
-            return query;
+            if (query.Any())
+            {
+                return new SuccessDataResult<IQueryable<T>>(query, "Listeleme İşlemi Başarılı");
+            }
+            return new ErrorDataResult<IQueryable<T>>("Listelenecek Bir Şey Bulunamadı");
         }
 
-        public IQueryable<T> GetWhere(Expression<Func<T, bool>> method)
+        public IDataResult<IQueryable<T>> GetWhere(Expression<Func<T, bool>> method)
         {
             var query = Table.Where(method);
-            return query;
+            if (query.Any())
+            {
+                return new SuccessDataResult<IQueryable<T>>(query, "Listeleme İşlemi Başarılı"); ;
+            }
+            return new ErrorDataResult<IQueryable<T>>("Listelenecek Bir Şey Bulunamadı");
         }
 
-        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> method)
+        public async Task<IDataResult<T>> GetSingleAsync(Expression<Func<T, bool>> method)
         {
             var query = Table.AsQueryable();
-         
-            return await query.FirstOrDefaultAsync(method);
+            var result = await query.FirstOrDefaultAsync(method);
+
+            if (result != null)
+            {
+                return new SuccessDataResult<T>(result, "Getirme İşlemi Başarılı");
+            }
+
+            return new ErrorDataResult<T>("Getirecek Bir Şey Bulunamadı");
         }
 
-        public async Task<T> GetByIdAsync(string id)
+        public async Task<IDataResult<T>> GetByIdAsync(string id)
         {
             var query = Table.AsQueryable();
-   
-            return await query.FirstOrDefaultAsync(data => data.Id == int.Parse(id));
+            var result = await query.FirstOrDefaultAsync(data => data.Id == int.Parse(id));
+
+            if (result != null)
+            {
+                return new SuccessDataResult<T>(result, "Getirme İşlemi Başarılı");
+            }
+
+            return new ErrorDataResult<T>("Getirecek Bir Şey Bulunamadı");
         }
     }
 }

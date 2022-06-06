@@ -1,4 +1,4 @@
-﻿namespace EntityLayer.Concrete
+﻿namespace LCWProjectAPI.Domain.Entities.Common
 {
     public enum EnumStatus
     {
