@@ -1,10 +1,9 @@
-﻿using LCWProjectAPI.Domain.Entities.Common;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace EntityLayer.Concrete.Entities
 {
-    public class User : BaseEntity
+    public class User : IdentityUser
     {
-        public string Surname { get; set; }
-        public string EMail { get; set; }
+    
     }
 }

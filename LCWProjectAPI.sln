@@ -9,15 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{B1AB42E6-F5D4-4833-A76D-3EDD76E8238E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCWProjectAPI.Application", "Core\LCWProjectAPI.Application\LCWProjectAPI.Application.csproj", "{7CA86F4A-DB16-4EB1-A4EC-2059C24DF315}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LCWProjectAPI.Application", "Core\LCWProjectAPI.Application\LCWProjectAPI.Application.csproj", "{7CA86F4A-DB16-4EB1-A4EC-2059C24DF315}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCWProjectAPI.Domain", "Core\LCWProjectAPI.Domain\LCWProjectAPI.Domain.csproj", "{ED5BF5B0-CC4E-4FB2-851B-24FEE9710269}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LCWProjectAPI.Domain", "Core\LCWProjectAPI.Domain\LCWProjectAPI.Domain.csproj", "{ED5BF5B0-CC4E-4FB2-851B-24FEE9710269}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCWProjectAPI.Infrastructure", "Infrastructure\LCWProjectAPI.Infrastructure\LCWProjectAPI.Infrastructure.csproj", "{23E5B617-AAD7-44D4-BE20-6C8C1B0BFCC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LCWProjectAPI.Infrastructure", "Infrastructure\LCWProjectAPI.Infrastructure\LCWProjectAPI.Infrastructure.csproj", "{23E5B617-AAD7-44D4-BE20-6C8C1B0BFCC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCWProjectAPI.Persistence", "Infrastructure\LCWProjectAPI.Persistence\LCWProjectAPI.Persistence.csproj", "{851E69EF-AB98-45AC-9C80-40555B3C0319}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LCWProjectAPI.Persistence", "Infrastructure\LCWProjectAPI.Persistence\LCWProjectAPI.Persistence.csproj", "{851E69EF-AB98-45AC-9C80-40555B3C0319}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCWProjectAPI.API", "Presentation\LCWProjectAPI.API\LCWProjectAPI.API.csproj", "{23A62C49-B54A-4D2E-B4C9-7554ABE6738A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LCWProjectAPI.API", "Presentation\LCWProjectAPI.API\LCWProjectAPI.API.csproj", "{23A62C49-B54A-4D2E-B4C9-7554ABE6738A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCWProjectAPI.UI", "Presentation\LCWProjectAPI.UI\LCWProjectAPI.UI.csproj", "{433CA82F-6298-479E-948A-4131509EA732}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{23A62C49-B54A-4D2E-B4C9-7554ABE6738A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23A62C49-B54A-4D2E-B4C9-7554ABE6738A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23A62C49-B54A-4D2E-B4C9-7554ABE6738A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{433CA82F-6298-479E-948A-4131509EA732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{433CA82F-6298-479E-948A-4131509EA732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{433CA82F-6298-479E-948A-4131509EA732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{433CA82F-6298-479E-948A-4131509EA732}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{23E5B617-AAD7-44D4-BE20-6C8C1B0BFCC4} = {E4D172CB-A5B3-4874-BC0D-803110CCFECB}
 		{851E69EF-AB98-45AC-9C80-40555B3C0319} = {E4D172CB-A5B3-4874-BC0D-803110CCFECB}
 		{23A62C49-B54A-4D2E-B4C9-7554ABE6738A} = {B1AB42E6-F5D4-4833-A76D-3EDD76E8238E}
+		{433CA82F-6298-479E-948A-4131509EA732} = {B1AB42E6-F5D4-4833-A76D-3EDD76E8238E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2915CD4-1BCC-4E5E-B00D-BA538F3D657D}

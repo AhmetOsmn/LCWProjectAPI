@@ -1,10 +1,11 @@
 ﻿using EntityLayer.Concrete.Entities;
 using LCWProjectAPI.Domain.Entities.Common;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LCWProjectAPI.Persistence.Contexts
 {
-    public class LCWDbContext : DbContext
+    public class LCWDbContext : IdentityDbContext<User>
     {
         public LCWDbContext(DbContextOptions options) : base(options)
         {
